@@ -40,7 +40,7 @@ def nasa_image():
 
     c = urllib3.PoolManager()
 
-    if (url_img_type == 'photo'):
+    if (url_img_type == 'image'):
 
         # get the image from the url and save it into the test.png file
         with c.request('GET', url, preload_content=False) as resp, open("test.png", 'wb') as out_file:
@@ -50,9 +50,9 @@ def nasa_image():
 
         resp.release_conn()
 
-    else :
-        with c.request('GET', url_img_mars, preload_content=False) as resp, open("test2.png", 'wb') as out_file:
-            shutil.copyfileobj(resp, out_file)
+
+    with c.request('GET', url_img_mars, preload_content=False) as resp, open("test2.png", 'wb') as out_file:
+        shutil.copyfileobj(resp, out_file)
 
         resp.release_conn()
 
